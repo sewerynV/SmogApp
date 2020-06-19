@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/error_image"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="24dp"
+        tools:src="@drawable/ic_error_general"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/error_message"
+        style="@style/messageText"
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor" />
+
+    <Button
+        android:id="@+id/error_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Retry"
+        style="@style/borderlessButton"
+        android:layout_marginTop="24dp" />
+
+</LinearLayout>

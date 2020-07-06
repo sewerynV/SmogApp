@@ -6,6 +6,8 @@ import com.seweryn.smogapp.data.model.Station
 import com.seweryn.smogapp.utils.SchedulerProvider
 import com.seweryn.smogapp.viewmodel.liveDataModels.Error
 import com.seweryn.smogapp.viewmodel.liveDataModels.ErrorAction.*
+import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 class StationsListViewModel(private val smogRepository: SmogRepository,
                             schedulerProvider: SchedulerProvider): BaseViewModel(schedulerProvider) {
@@ -18,10 +20,32 @@ class StationsListViewModel(private val smogRepository: SmogRepository,
 
     init {
         getStations()
+        testRx()
     }
 
     fun setClosable(isClosable: Boolean){
         this.isClosable = isClosable
+    }
+
+    fun testRx() {
+        val command = Observable.fromIterable(listOf(1,2,3,4,5))
+            .switchMap {
+                testRxDelay(it, 5L / it)
+            }
+        load(
+            command = command,
+            onNext = { result ->
+                println("DUPA: $result")
+            },
+            onError = {
+
+            }
+        )
+    }
+
+    private fun testRxDelay(value: Int, delay: Long): Observable<Int> {
+        return Observable.just(value).delay(delay, TimeUnit.SECONDS)
+
     }
 
     private fun getStations() {

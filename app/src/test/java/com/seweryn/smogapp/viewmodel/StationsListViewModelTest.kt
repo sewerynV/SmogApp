@@ -168,4 +168,11 @@ class StationsListViewModelTest : WithMockito {
         )
     }
 
+    @Test
+    fun `test map rx`() {
+        simulateStationsCanNotBeLoaded()
+        val systemUnderTest = StationsListViewModel(smogRepository, schedulerProvider)
+        systemUnderTest.testRx()
+    }
+
 }

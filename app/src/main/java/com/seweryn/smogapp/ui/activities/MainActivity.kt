@@ -40,6 +40,11 @@ class MainActivity : BaseActivity<MainViewModel>(), MeasurementsFragment.EventsL
         }
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        println("RESTART DUPA")
+    }
+
     private fun showFragment(fragment: Fragment, tag: String) {
         val foundFragment = supportFragmentManager.findFragmentByTag(tag)
         if (foundFragment == null) {
